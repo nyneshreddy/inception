@@ -1250,7 +1250,7 @@
 //      } else {
 //        return this.adder.hide();
 //      }
-      annotation = this.setupAnnotation(this.createAnnotation());
+      var annotation = this.setupAnnotation(this.createAnnotation());
       $(annotation.highlights).removeClass('annotator-hl-temporary');
       if (annotation.ranges.length > 0) {
     	  this.publish('annotationCreated', [annotation]);
