@@ -39,7 +39,7 @@ function updateLearningCurveDiagram(arrayOfLearningCurves) {
 
     // if we just have one value per data-row, we cannot visualize a step
     var plotTypes = {};
-	for (i = 0; i < arrayOfLearningCurves.length; i++) {
+	for (var i = 0; i < arrayOfLearningCurves.length; i++) {
 		if (arrayOfLearningCurves[i].length < 3) {
 			plotTypes[arrayOfLearningCurves[i][0]] = 'scatter';
 		} else {
