@@ -33433,218 +33433,170 @@ var PostScriptEvaluator = (function PostScriptEvaluatorClosure() {
           stack.push(operator);
           continue;
         }
-        switch (operator) {
-          // non standard ps operators
-          case 'jz': // jump if false
-            b = stack.pop();
-            a = stack.pop();
-            if (!a) {
-              counter = b;
-            }
-            break;
-          case 'j': // jump
-            a = stack.pop();
-            counter = a;
-            break;
-
-          // all ps operators in alphabetical order (excluding if/ifelse)
-          case 'abs':
-            a = stack.pop();
-            stack.push(Math.abs(a));
-            break;
-          case 'add':
-            b = stack.pop();
-            a = stack.pop();
-            stack.push(a + b);
-            break;
-          case 'and':
-            b = stack.pop();
-            a = stack.pop();
-            if (isBool(a) && isBool(b)) {
-              stack.push(a && b);
-            } else {
-              stack.push(a & b);
-            }
-            break;
-          case 'atan':
-            a = stack.pop();
-            stack.push(Math.atan(a));
-            break;
-          case 'bitshift':
-            b = stack.pop();
-            a = stack.pop();
-            if (a > 0) {
-              stack.push(a << b);
-            } else {
-              stack.push(a >> b);
-            }
-            break;
-          case 'ceiling':
-            a = stack.pop();
-            stack.push(Math.ceil(a));
-            break;
-          case 'copy':
-            a = stack.pop();
-            stack.copy(a);
-            break;
-          case 'cos':
-            a = stack.pop();
-            stack.push(Math.cos(a));
-            break;
-          case 'cvi':
-            a = stack.pop() | 0;
-            stack.push(a);
-            break;
-          case 'cvr':
-            // noop
-            break;
-          case 'div':
-            b = stack.pop();
-            a = stack.pop();
-            stack.push(a / b);
-            break;
-          case 'dup':
-            stack.copy(1);
-            break;
-          case 'eq':
-            b = stack.pop();
-            a = stack.pop();
-            stack.push(a === b);
-            break;
-          case 'exch':
-            stack.roll(2, 1);
-            break;
-          case 'exp':
-            b = stack.pop();
-            a = stack.pop();
-            stack.push(Math.pow(a, b));
-            break;
-          case 'false':
-            stack.push(false);
-            break;
-          case 'floor':
-            a = stack.pop();
-            stack.push(Math.floor(a));
-            break;
-          case 'ge':
-            b = stack.pop();
-            a = stack.pop();
-            stack.push(a >= b);
-            break;
-          case 'gt':
-            b = stack.pop();
-            a = stack.pop();
-            stack.push(a > b);
-            break;
-          case 'idiv':
-            b = stack.pop();
-            a = stack.pop();
-            stack.push((a / b) | 0);
-            break;
-          case 'index':
-            a = stack.pop();
-            stack.index(a);
-            break;
-          case 'le':
-            b = stack.pop();
-            a = stack.pop();
-            stack.push(a <= b);
-            break;
-          case 'ln':
-            a = stack.pop();
-            stack.push(Math.log(a));
-            break;
-          case 'log':
-            a = stack.pop();
-            stack.push(Math.log(a) / Math.LN10);
-            break;
-          case 'lt':
-            b = stack.pop();
-            a = stack.pop();
-            stack.push(a < b);
-            break;
-          case 'mod':
-            b = stack.pop();
-            a = stack.pop();
-            stack.push(a % b);
-            break;
-          case 'mul':
-            b = stack.pop();
-            a = stack.pop();
-            stack.push(a * b);
-            break;
-          case 'ne':
-            b = stack.pop();
-            a = stack.pop();
-            stack.push(a !== b);
-            break;
-          case 'neg':
-            a = stack.pop();
-            stack.push(-a);
-            break;
-          case 'not':
-            a = stack.pop();
-            if (isBool(a)) {
-              stack.push(!a);
-            } else {
-              stack.push(~a);
-            }
-            break;
-          case 'or':
-            b = stack.pop();
-            a = stack.pop();
-            if (isBool(a) && isBool(b)) {
-              stack.push(a || b);
-            } else {
-              stack.push(a | b);
-            }
-            break;
-          case 'pop':
-            stack.pop();
-            break;
-          case 'roll':
-            b = stack.pop();
-            a = stack.pop();
-            stack.roll(a, b);
-            break;
-          case 'round':
-            a = stack.pop();
-            stack.push(Math.round(a));
-            break;
-          case 'sin':
-            a = stack.pop();
-            stack.push(Math.sin(a));
-            break;
-          case 'sqrt':
-            a = stack.pop();
-            stack.push(Math.sqrt(a));
-            break;
-          case 'sub':
-            b = stack.pop();
-            a = stack.pop();
-            stack.push(a - b);
-            break;
-          case 'true':
-            stack.push(true);
-            break;
-          case 'truncate':
-            a = stack.pop();
-            a = a < 0 ? Math.ceil(a) : Math.floor(a);
-            stack.push(a);
-            break;
-          case 'xor':
-            b = stack.pop();
-            a = stack.pop();
-            if (isBool(a) && isBool(b)) {
+          if (operator === 'jz') {// jump if false
+              b = stack.pop();
+              a = stack.pop();
+              if (!a) {
+                  counter = b;
+              }
+          } else if (operator === 'j') {// jump
+              a = stack.pop();
+              counter = a;
+          } else if (operator === 'abs') {
+              a = stack.pop();
+              stack.push(Math.abs(a));
+          } else if (operator === 'add') {
+              b = stack.pop();
+              a = stack.pop();
+              stack.push(a + b);
+          } else if (operator === 'and') {
+              b = stack.pop();
+              a = stack.pop();
+              if (isBool(a) && isBool(b)) {
+                  stack.push(a && b);
+              } else {
+                  stack.push(a & b);
+              }
+          } else if (operator === 'atan') {
+              a = stack.pop();
+              stack.push(Math.atan(a));
+          } else if (operator === 'bitshift') {
+              b = stack.pop();
+              a = stack.pop();
+              if (a > 0) {
+                  stack.push(a << b);
+              } else {
+                  stack.push(a >> b);
+              }
+          } else if (operator === 'ceiling') {
+              a = stack.pop();
+              stack.push(Math.ceil(a));
+          } else if (operator === 'copy') {
+              a = stack.pop();
+              stack.copy(a);
+          } else if (operator === 'cos') {
+              a = stack.pop();
+              stack.push(Math.cos(a));
+          } else if (operator === 'cvi') {
+              a = stack.pop() | 0;
+              stack.push(a);
+          } else if (operator === 'cvr') {// noop
+          } else if (operator === 'div') {
+              b = stack.pop();
+              a = stack.pop();
+              stack.push(a / b);
+          } else if (operator === 'dup') {
+              stack.copy(1);
+          } else if (operator === 'eq') {
+              b = stack.pop();
+              a = stack.pop();
+              stack.push(a === b);
+          } else if (operator === 'exch') {
+              stack.roll(2, 1);
+          } else if (operator === 'exp') {
+              b = stack.pop();
+              a = stack.pop();
+              stack.push(Math.pow(a, b));
+          } else if (operator === 'false') {
+              stack.push(false);
+          } else if (operator === 'floor') {
+              a = stack.pop();
+              stack.push(Math.floor(a));
+          } else if (operator === 'ge') {
+              b = stack.pop();
+              a = stack.pop();
+              stack.push(a >= b);
+          } else if (operator === 'gt') {
+              b = stack.pop();
+              a = stack.pop();
+              stack.push(a > b);
+          } else if (operator === 'idiv') {
+              b = stack.pop();
+              a = stack.pop();
+              stack.push((a / b) | 0);
+          } else if (operator === 'index') {
+              a = stack.pop();
+              stack.index(a);
+          } else if (operator === 'le') {
+              b = stack.pop();
+              a = stack.pop();
+              stack.push(a <= b);
+          } else if (operator === 'ln') {
+              a = stack.pop();
+              stack.push(Math.log(a));
+          } else if (operator === 'log') {
+              a = stack.pop();
+              stack.push(Math.log(a) / Math.LN10);
+          } else if (operator === 'lt') {
+              b = stack.pop();
+              a = stack.pop();
+              stack.push(a < b);
+          } else if (operator === 'mod') {
+              b = stack.pop();
+              a = stack.pop();
+              stack.push(a % b);
+          } else if (operator === 'mul') {
+              b = stack.pop();
+              a = stack.pop();
+              stack.push(a * b);
+          } else if (operator === 'ne') {
+              b = stack.pop();
+              a = stack.pop();
               stack.push(a !== b);
-            } else {
-              stack.push(a ^ b);
-            }
-            break;
-          default:
-            error('Unknown operator ' + operator);
-            break;
-        }
+          } else if (operator === 'neg') {
+              a = stack.pop();
+              stack.push(-a);
+          } else if (operator === 'not') {
+              a = stack.pop();
+              if (isBool(a)) {
+                  stack.push(!a);
+              } else {
+                  stack.push(~a);
+              }
+          } else if (operator === 'or') {
+              b = stack.pop();
+              a = stack.pop();
+              if (isBool(a) && isBool(b)) {
+                  stack.push(a || b);
+              } else {
+                  stack.push(a | b);
+              }
+          } else if (operator === 'pop') {
+              stack.pop();
+          } else if (operator === 'roll') {
+              b = stack.pop();
+              a = stack.pop();
+              stack.roll(a, b);
+          } else if (operator === 'round') {
+              a = stack.pop();
+              stack.push(Math.round(a));
+          } else if (operator === 'sin') {
+              a = stack.pop();
+              stack.push(Math.sin(a));
+          } else if (operator === 'sqrt') {
+              a = stack.pop();
+              stack.push(Math.sqrt(a));
+          } else if (operator === 'sub') {
+              b = stack.pop();
+              a = stack.pop();
+              stack.push(a - b);
+          } else if (operator === 'true') {
+              stack.push(true);
+          } else if (operator === 'truncate') {
+              a = stack.pop();
+              a = a < 0 ? Math.ceil(a) : Math.floor(a);
+              stack.push(a);
+          } else if (operator === 'xor') {
+              b = stack.pop();
+              a = stack.pop();
+              if (isBool(a) && isBool(b)) {
+                  stack.push(a !== b);
+              } else {
+                  stack.push(a ^ b);
+              }
+          } else {
+              error('Unknown operator ' + operator);
+          }
       }
       return stack.stack;
     }
