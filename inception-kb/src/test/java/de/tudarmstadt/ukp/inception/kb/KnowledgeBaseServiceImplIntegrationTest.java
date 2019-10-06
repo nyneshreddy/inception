@@ -142,6 +142,7 @@ public class KnowledgeBaseServiceImplIntegrationTest  {
 
     @Test
     public void thatApplicationContextStarts() {
+        throw new UnsupportedOperationException();
     }
 
     @Test

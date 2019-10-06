@@ -116,6 +116,7 @@ public class RecommendationServiceImplIntegrationTest
     @Test
     public void thatApplicationContextStarts()
     {
+        throw new UnsupportedOperationException();
     }
     
     @Test

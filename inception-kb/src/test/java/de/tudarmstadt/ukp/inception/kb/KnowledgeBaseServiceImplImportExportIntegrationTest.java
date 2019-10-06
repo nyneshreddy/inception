@@ -103,6 +103,7 @@ public class KnowledgeBaseServiceImplImportExportIntegrationTest {
 
     @Test
     public void thatApplicationContextStarts() {
+        throw new UnsupportedOperationException();
     }
 
     @Test

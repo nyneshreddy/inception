@@ -221,6 +221,7 @@ public class PDFExtractor
 
     @Override public void drawImage(PDImage pdImage)
     {
+        throw new UnsupportedOperationException();
     }
 
     @Override public void appendRectangle(Point2D p0, Point2D p1, Point2D p2, Point2D p3)
@@ -233,6 +234,7 @@ public class PDFExtractor
 
     @Override public void clip(int i)
     {
+        throw new UnsupportedOperationException();
     }
 
     @Override public void moveTo(float x, float y)
@@ -258,10 +260,12 @@ public class PDFExtractor
 
     @Override public void closePath()
     {
+        throw new UnsupportedOperationException();
     }
 
     @Override public void endPath()
     {
+        throw new UnsupportedOperationException();
     }
 
     @Override public void strokePath()
@@ -281,6 +285,7 @@ public class PDFExtractor
 
     @Override public void shadingFill(COSName cosName)
     {
+        throw new UnsupportedOperationException();
     }
 
     @Override public void showFontGlyph(Matrix textRenderingMatrix, PDFont font, int code,
