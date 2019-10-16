@@ -114,12 +114,6 @@ public class RecommendationServiceImplIntegrationTest
     }
 
     @Test
-    public void thatApplicationContextStarts()
-    {
-        throw new UnsupportedOperationException();
-    }
-    
-    @Test
     public void listRecommenders_WithOneEnabledRecommender_ShouldReturnStoredRecommender()
     {
         sut.createOrUpdateRecommender(rec);

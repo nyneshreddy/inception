@@ -102,11 +102,6 @@ public class KnowledgeBaseServiceImplImportExportIntegrationTest {
     }
 
     @Test
-    public void thatApplicationContextStarts() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Test
     public void importData_WithExistingTtl_ShouldImportTriples() throws Exception {
         sut.registerKnowledgeBase(kb, sut.getNativeConfig());
 

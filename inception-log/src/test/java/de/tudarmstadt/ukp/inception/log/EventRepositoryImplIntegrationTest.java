@@ -79,11 +79,6 @@ public class EventRepositoryImplIntegrationTest  {
     }
     
     @Test
-    public void thatApplicationContextStarts() {
-        throw new UnsupportedOperationException();
-    }
-    
-    @Test
     public void getLoggedEventsForDoc_WithoutLoggedEvent_ShouldReturnEmptyList()
     {
         List<LoggedEvent> loggedEvents = sut.listUniqueLoggedEventsForDoc(project,
