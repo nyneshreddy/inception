@@ -4216,94 +4216,138 @@ var SVGGraphics = (function SVGGraphicsClosure() {
         var fnId = opTree[x].fnId;
         var args = opTree[x].args;
 
-          if (fnId | 0 === OPS.beginText) {
+          switch (fnId | 0) {
+          case OPS.beginText:
               this.beginText();
-          } else if (fnId | 0 === OPS.setLeading) {
+              break;
+          case OPS.setLeading:
               this.setLeading(args);
-          } else if (fnId | 0 === OPS.setLeadingMoveText) {
+              break;
+          case OPS.setLeadingMoveText:
               this.setLeadingMoveText(args[0], args[1]);
-          } else if (fnId | 0 === OPS.setFont) {
+              break;
+          case OPS.setFont:
               this.setFont(args);
-          } else if (fnId | 0 === OPS.showText) {
+              break;
+          case OPS.showText:
               this.showText(args[0]);
-          } else if (fnId | 0 === OPS.showSpacedText) {
+              break;
+          case OPS.showSpacedText:
               this.showText(args[0]);
-          } else if (fnId | 0 === OPS.endText) {
+              break;
+          case OPS.endText:
               this.endText();
-          } else if (fnId | 0 === OPS.moveText) {
+              break;
+          case OPS.moveText:
               this.moveText(args[0], args[1]);
-          } else if (fnId | 0 === OPS.setCharSpacing) {
+              break;
+          case OPS.setCharSpacing:
               this.setCharSpacing(args[0]);
-          } else if (fnId | 0 === OPS.setWordSpacing) {
+              break;
+          case OPS.setWordSpacing:
               this.setWordSpacing(args[0]);
-          } else if (fnId | 0 === OPS.setHScale) {
+              break;
+          case OPS.setHScale:
               this.setHScale(args[0]);
-          } else if (fnId | 0 === OPS.setTextMatrix) {
+              break;
+          case OPS.setTextMatrix:
               this.setTextMatrix(args[0], args[1], args[2],
                   args[3], args[4], args[5]);
-          } else if (fnId | 0 === OPS.setLineWidth) {
+              break;
+          case OPS.setLineWidth:
               this.setLineWidth(args[0]);
-          } else if (fnId | 0 === OPS.setLineJoin) {
+              break;
+          case OPS.setLineJoin:
               this.setLineJoin(args[0]);
-          } else if (fnId | 0 === OPS.setLineCap) {
+              break;
+          case OPS.setLineCap:
               this.setLineCap(args[0]);
-          } else if (fnId | 0 === OPS.setMiterLimit) {
+              break;
+          case OPS.setMiterLimit:
               this.setMiterLimit(args[0]);
-          } else if (fnId | 0 === OPS.setFillRGBColor) {
+              break;
+          case OPS.setFillRGBColor:
               this.setFillRGBColor(args[0], args[1], args[2]);
-          } else if (fnId | 0 === OPS.setStrokeRGBColor) {
+              break;
+          case OPS.setStrokeRGBColor:
               this.setStrokeRGBColor(args[0], args[1], args[2]);
-          } else if (fnId | 0 === OPS.setDash) {
+              break;
+          case OPS.setDash:
               this.setDash(args[0], args[1]);
-          } else if (fnId | 0 === OPS.setGState) {
+              break;
+          case OPS.setGState:
               this.setGState(args[0]);
-          } else if (fnId | 0 === OPS.fill) {
+              break;
+          case OPS.fill:
               this.fill();
-          } else if (fnId | 0 === OPS.eoFill) {
+              break;
+          case OPS.eoFill:
               this.eoFill();
-          } else if (fnId | 0 === OPS.stroke) {
+              break;
+          case OPS.stroke:
               this.stroke();
-          } else if (fnId | 0 === OPS.fillStroke) {
+              break;
+          case OPS.fillStroke:
               this.fillStroke();
-          } else if (fnId | 0 === OPS.eoFillStroke) {
+              break;
+          case OPS.eoFillStroke:
               this.eoFillStroke();
-          } else if (fnId | 0 === OPS.clip) {
+              break;
+          case OPS.clip:
               this.clip('nonzero');
-          } else if (fnId | 0 === OPS.eoClip) {
+              break;
+          case OPS.eoClip:
               this.clip('evenodd');
-          } else if (fnId | 0 === OPS.paintSolidColorImageMask) {
+              break;
+          case OPS.paintSolidColorImageMask:
               this.paintSolidColorImageMask();
-          } else if (fnId | 0 === OPS.paintJpegXObject) {
+              break;
+          case OPS.paintJpegXObject:
               this.paintJpegXObject(args[0], args[1], args[2]);
-          } else if (fnId | 0 === OPS.paintImageXObject) {
+              break;
+          case OPS.paintImageXObject:
               this.paintImageXObject(args[0]);
-          } else if (fnId | 0 === OPS.paintInlineImageXObject) {
+              break;
+          case OPS.paintInlineImageXObject:
               this.paintInlineImageXObject(args[0]);
-          } else if (fnId | 0 === OPS.paintImageMaskXObject) {
+              break;
+          case OPS.paintImageMaskXObject:
               this.paintImageMaskXObject(args[0]);
-          } else if (fnId | 0 === OPS.paintFormXObjectBegin) {
+              break;
+          case OPS.paintFormXObjectBegin:
               this.paintFormXObjectBegin(args[0], args[1]);
-          } else if (fnId | 0 === OPS.paintFormXObjectEnd) {
+              break;
+          case OPS.paintFormXObjectEnd:
               this.paintFormXObjectEnd();
-          } else if (fnId | 0 === OPS.closePath) {
+              break;
+          case OPS.closePath:
               this.closePath();
-          } else if (fnId | 0 === OPS.closeStroke) {
+              break;
+          case OPS.closeStroke:
               this.closeStroke();
-          } else if (fnId | 0 === OPS.closeFillStroke) {
+              break;
+          case OPS.closeFillStroke:
               this.closeFillStroke();
-          } else if (fnId | 0 === OPS.nextLine) {
+              break;
+          case OPS.nextLine:
               this.nextLine();
-          } else if (fnId | 0 === OPS.transform) {
+              break;
+          case OPS.transform:
               this.transform(args[0], args[1], args[2], args[3],
                   args[4], args[5]);
-          } else if (fnId | 0 === OPS.constructPath) {
+              break;
+          case OPS.constructPath:
               this.constructPath(args[0], args[1]);
-          } else if (fnId | 0 === OPS.endPath) {
+              break;
+          case OPS.endPath:
               this.endPath();
-          } else if (fnId | 0 === 92) {
+              break;
+          case 92:
               this.group(opTree[x].items);
-          } else {
-              warn('Unimplemented method ' + fn);
+              break;
+          default:
+              warn('Unimplemented method '+ fn);
+              break;
           }
       }
     },
